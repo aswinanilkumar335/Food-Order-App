@@ -1,0 +1,44 @@
+<!-- Header-->
+<header class="bg-danger py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div style="margin-left: 90px;" class="text-white">
+            <h1 class="display-4 fw-bolder">Hungry?</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Order your favourite foods.</p>
+        </div>
+    </div>
+</header>
+<div class="container p-1 mt-3">
+    <!-- For search food -->
+    <app-search></app-search>
+    <!-- for tags -->
+    <app-tags></app-tags>
+    <!-- food in card -->
+    <ul>
+        <li *ngFor="let food of foods">
+            <a routerLink="/food/{{food.id}}">
+                <img style="height: 200px;" src="{{food.imageUrl}}" alt="food Images">
+                <div class="content">
+                    <div class="name mt-3 ">
+                        {{food.name}}
+                    </div>
+                    <span class="favorite {{food.favorite?'':'not'}} mt-3">❤</span>
+                    <div class="product-item-footer">
+                        <div class="origins">
+                            <span *ngFor="let origin of food.origins">
+                                {{origin}}
+                            </span><br>
+                            <span class="star mt-3">Review : {{food.review}}</span>
+                        </div>
+                        <div class="cook-time mt-1">
+                            <span>🕐</span>
+                            {{food.cookTime}}
+                        </div>
+                    </div>
+                    <div class="price mt-4">
+                        {{food.price|currency}}
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
